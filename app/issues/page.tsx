@@ -1,6 +1,6 @@
+import { IssueStatusBadge, Link } from "@/app/components";
 import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
-import { Link, IssueStatusBadge } from "@/app/components";
 import IssueActions from "./IssueActions";
 
 async function IssuePage() {
@@ -39,5 +39,7 @@ async function IssuePage() {
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";
 
 export default IssuePage;
