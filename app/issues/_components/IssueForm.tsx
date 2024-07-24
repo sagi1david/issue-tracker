@@ -50,12 +50,14 @@ function IssueForm({ issue }: { issue?: Issue }) {
         </Callout.Root>
       )}
       <form className="space-y-3" onSubmit={onSubmit}>
-        <TextField.Root
-          placeholder="Title"
-          defaultValue={issue?.title}
-          {...register("title")}
-        />
-        {errors.title && <ErrorMessage>{errors.title?.message}</ErrorMessage>}
+        <TextField.Root>
+          <TextField.Input
+            defaultValue={issue?.title}
+            placeholder="Title"
+            {...register("title")}
+          />
+        </TextField.Root>
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller
           name="description"
           control={control}
@@ -64,9 +66,7 @@ function IssueForm({ issue }: { issue?: Issue }) {
             <SimpleMDE placeholder="Description" {...field} />
           )}
         />
-        {errors.description && (
-          <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        )}
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button disabled={isSubmitting}>
           {issue ? "Update Issue" : "Submit New Issue"}{" "}
           {isSubmitting && <Spinner />}
